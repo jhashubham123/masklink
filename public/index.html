@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Link Masker</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main>
+    <header class="top">
+      <h1>Link Masker</h1>
+      <button id="logout" class="secondary" hidden>Log out</button>
+    </header>
+
+    <section id="login" class="card">
+      <h2>Admin login</h2>
+      <form id="login-form">
+        <input type="password" id="token" placeholder="Admin password" required autocomplete="current-password">
+        <button type="submit">Sign in</button>
+      </form>
+      <p id="login-error" class="error" hidden></p>
+    </section>
+
+    <div id="app" hidden>
+      <section class="card">
+        <h2>Create masked link</h2>
+        <form id="create-form">
+          <label>Campaign name
+            <input id="campaign" required maxlength="100" placeholder="e.g. FB - Offer X - US">
+          </label>
+          <label>Affiliate link
+            <input id="destination" type="url" required placeholder="https://network.com/click?offer=123&amp;sub1={click_id}">
+          </label>
+          <label>Custom slug (optional)
+            <input id="slug" pattern="[a-zA-Z0-9_\-]{3,40}" placeholder="auto-generated if empty">
+          </label>
+          <button type="submit">Create link</button>
+        </form>
+        <p class="hint">Put <code>{click_id}</code> in the affiliate URL where the network expects your sub ID. If you leave it out, it is added automatically as a query parameter.</p>
+        <p id="create-msg" class="msg" hidden></p>
+      </section>
+
+      <section class="card">
+        <div class="row">
+          <h2>Your links</h2>
+          <button id="refresh" class="secondary">Refresh</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Campaign</th>
+                <th>Masked link</th>
+                <th class="num">Clicks</th>
+                <th class="num">Conv.</th>
+                <th class="num">Revenue</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+        <p id="empty" class="hint" hidden>No links yet. Create your first one above.</p>
+      </section>
+    </div>
+  </main>
+  <script src="/index.js"></script>
+</body>
+</html>

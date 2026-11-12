@@ -1,0 +1,6 @@
+{
+  "outputDirectory": "public",
+  "rewrites": [
+    { "source": "/r/:slug", "destination": "/api/go?slug=:slug" }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "masklink",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "@vercel/functions": "^2.0.0"
+  }
+}
